@@ -1,1 +1,1 @@
-const String kBaseUrl = '';
+const String kBaseUrl = 'https://672f6510229a881691f2d126.mockapi.io/api/v1';

@@ -16,8 +16,8 @@ abstract class AuthenticationRemoteDataSource{
   Future<List<UserModel>> getUsers();
 }
 
-const String kCreate = '/user';
-const String kGet = '/users';
+const String kCreate = 'users';
+const String kGet = 'users';
 
 class AuthenticationRemoteDataSourceIml implements AuthenticationRemoteDataSource{
 
@@ -37,7 +37,9 @@ class AuthenticationRemoteDataSourceIml implements AuthenticationRemoteDataSourc
         })
       );
 
-      if (response.statusCode != 200 || response.statusCode != 201){
+      print([response.body, response.statusCode]);
+
+      if (response.statusCode != 200 && response.statusCode != 201){
         throw ServerException(message: response.body, statusCode: response.statusCode);
       }
     } on ServerException{
@@ -53,7 +55,7 @@ class AuthenticationRemoteDataSourceIml implements AuthenticationRemoteDataSourc
     
       final response = await _client.get(Uri.parse('$kBaseUrl/$kGet'));
       
-      if (response.statusCode != 200 || response.statusCode != 201){
+      if (response.statusCode != 200 && response.statusCode != 201){
         throw ServerException(message: response.body, statusCode: response.statusCode);
       }
 

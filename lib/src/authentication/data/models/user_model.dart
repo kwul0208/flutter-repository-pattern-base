@@ -16,7 +16,7 @@ class UserModel extends User{
 
   UserModel.fromMap(DataMap map) : 
     super(
-      id: map['id'] as int,
+      id: int.parse(map['id']),
       name: map['name'] as String,
       avatar: map['avatar'] as String,
       createdAt: map['createdAt'] as String,

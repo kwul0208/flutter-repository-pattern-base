@@ -28,6 +28,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
     final result = await _getUser();
 
-    result.fold((failure) => failure.errorMessage, (users) => UsersLoaded(users));
+    result.fold((failure) => failure.errorMessage, (users) => emit(UsersLoaded(users)));
   }
 }
